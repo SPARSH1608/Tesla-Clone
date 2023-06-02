@@ -40,13 +40,21 @@ export default Section;
 
 const VideoBackground = styled.div`
   overflow-y: hidden;
+  overflow-x: hidden;
   z-index: -1;
+
   video {
     loop: true;
     position: absolute;
     top: 0px;
     left: 0;
     muted: true;
+    overflow-x: hidden;
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 `;
 

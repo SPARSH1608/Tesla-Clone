@@ -112,8 +112,9 @@ const Menu = styled.div`
     text-transform: uppercase;
     padding: 0 10px;
     flex-wrap: nowrap;
+    color: ${(props) => (props.scrollHeight ? "white" : " color: #393c41;")};
   }
-  #media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
