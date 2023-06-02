@@ -2,22 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
-// import { selectCars } from "../features/car/carSlice";
-// import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+
 function Header() {
   const [status, setStatus] = useState(false);
-  // const cars = useSelector(selectCars);
-  // console.log(cars);
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 100 ? true : false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <Container>
+    <Container Scrolled={isScrolled}>
       <a>
         <img src="/images/logo.svg" />
       </a>
       <Menu>
-        {/* {cars && cars.map((car,index)=>{
-          <a href="#">{car}</a>;
-      })} */}
         <a href="#">Model S</a>
 
         <a href="#">Model 3</a>
@@ -90,6 +96,7 @@ function Header() {
 
 export default Header;
 const Container = styled.div`
+  color: ${(props) => (props.Scrolled ? "red" : "#393c41")};
   min-height: 60px;
   position: fixed;
   display: flex;
@@ -112,7 +119,7 @@ const Menu = styled.div`
     text-transform: uppercase;
     padding: 0 10px;
     flex-wrap: nowrap;
-    color: ${(props) => (props.scrollHeight ? "white" : " color: #393c41;")};
+    color: ${(props) => (props.Scrolled ? "red" : "#393c41")};
   }
   @media (max-width: 768px) {
     display: none;
