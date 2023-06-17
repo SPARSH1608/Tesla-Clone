@@ -7,19 +7,19 @@ import { useState, useEffect } from "react";
 function Header() {
   const [status, setStatus] = useState(false);
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 100 ? true : false);
-    };
+  // const [isScrolled, setIsScrolled] = useState(false);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollY = window.scrollY;
+  //     setIsScrolled(scrollY > 100 ? true : false);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
   return (
-    <Container Scrolled={isScrolled}>
+    <Container>
       <a>
         <img src="/images/logo.svg" />
       </a>
